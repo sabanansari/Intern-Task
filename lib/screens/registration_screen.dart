@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:interns_task/constants.dart';
 import 'package:interns_task/widgets/enter_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:interns_task/screens/image_screen.dart';
+import 'package:interns_task/screens/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'registration';
@@ -70,7 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   final newUser = await _auth.createUserWithEmailAndPassword(
                       email: email, password: password);
                   if (newUser != null) {
-                    Navigator.pushNamed(context, ImageScreen.id);
+                    Navigator.pushNamed(context, HomeScreen.id);
                   }
                 } catch (e) {
                   print(e);
