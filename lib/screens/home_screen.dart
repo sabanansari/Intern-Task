@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
       length: choices.length,
       child: Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.green.withOpacity(0.8),
             title: const Text('Tapped AppBar'),
             bottom: TabBar(
               isScrollable: true,

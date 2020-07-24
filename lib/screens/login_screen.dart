@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:interns_task/widgets/enter_button.dart';
 import 'package:interns_task/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -10,6 +12,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               keyboardType: TextInputType.emailAddress,
-              onChanged: (value) {},
+              onChanged: (value) {
+                email = value;
+              },
               textAlign: TextAlign.center,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter the email'),
@@ -44,7 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               obscureText: true,
-              onChanged: (value) {},
+              onChanged: (value) {
+                password = value;
+              },
               textAlign: TextAlign.center,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter the password'),
@@ -55,7 +64,19 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: EnterButton(
-                onPressed: () {},
+                onPressed: () async {
+                  setState(() {});
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
+                  setState(() {});
+                },
                 label: 'Login',
                 colour: Colors.lightGreen,
               ),
