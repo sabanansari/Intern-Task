@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "966472906142",
+    "firebase_url": "https://viewimage-app.firebaseio.com",
+    "project_id": "viewimage-app",
+    "storage_bucket": "viewimage-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966472906142:android:da771a1831197046cd128f",
+        "android_client_info": {
+          "package_name": "co.ansari.interns_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966472906142-0sdlre09ag9t0mkvil1837oauh1i48s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7VG66x3u8w6ZtMQCfF9jlS-HI3wVS-IM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966472906142-0sdlre09ag9t0mkvil1837oauh1i48s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

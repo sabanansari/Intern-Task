@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:interns_task/constants.dart';
 import 'package:interns_task/widgets/enter_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:interns_task/screens/image_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'registration';
@@ -10,6 +12,9 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               keyboardType: TextInputType.emailAddress,
-              onChanged: (value) {},
+              onChanged: (value) {
+                email = value;
+              },
               textAlign: TextAlign.center,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter the email'),
@@ -44,7 +51,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               obscureText: true,
-              onChanged: (value) {},
+              onChanged: (value) {
+                password = value;
+              },
               textAlign: TextAlign.center,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter the password'),
@@ -55,7 +64,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             EnterButton(
               label: 'Register',
               colour: Colors.green,
-              onPressed: () {},
+              onPressed: () async {
+                setState(() {});
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, ImageScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
+                }
+              },
             ),
           ],
         ),
