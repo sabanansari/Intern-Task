@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
+  String emailId = 'abcde@xyz.com';
+  int number = 919123456789;
+
+  void _launchEmail(emailId) async {
+    var url = "mailto:$emailId";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not send email';
+    }
+  }
+
+  void _launchCaller(number) async {
+    var url = "tel:${number.toString()}";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not place call';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,12 +42,14 @@ class ContactScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
-            GestureDetector(
-              onTap: () {},
+            FlatButton(
+              onPressed: () {
+                _launchCaller(number);
+              },
               child: Text(
-                'Phone No.: +91 9123456789',
+                'Phone No.: +$number',
                 style: TextStyle(
                   color: Colors.black87,
                   fontSize: 15.0,
@@ -34,12 +57,14 @@ class ContactScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
-            GestureDetector(
-              onTap: () {},
+            FlatButton(
+              onPressed: () {
+                _launchEmail(emailId);
+              },
               child: Text(
-                'Email id: abcde@xyz.com',
+                'Email id: $emailId',
                 style: TextStyle(
                   color: Colors.black87,
                   fontSize: 15.0,
