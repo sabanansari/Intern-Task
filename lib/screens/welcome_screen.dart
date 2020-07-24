@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:interns_task/widgets/enter_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -12,6 +13,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green.withOpacity(0.6),
+        title: Text(
+          'ViewImage App',
+          style: TextStyle(),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -21,20 +29,34 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('image/greenshutter.png'),
+                Flexible(
+                  child: Container(
+                    height: 100.0,
+                    width: 80.0,
+                    child: Image.asset('images/greenshutter.png'),
+                  ),
                 ),
                 TypewriterAnimatedTextKit(
                   text: ['ViewImage App'],
                   textStyle: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 35.0,
+                    fontSize: 30.0,
                   ),
                 )
               ],
             ),
             SizedBox(
               height: 48.0,
+            ),
+            EnterButton(
+              label: 'Login',
+              colour: Colors.lightGreen,
+              onPressed: () {},
+            ),
+            EnterButton(
+              label: 'Register',
+              colour: Colors.green,
+              onPressed: () {},
             ),
           ],
         ),
