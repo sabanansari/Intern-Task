@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:interns_task/constants.dart';
 import 'package:interns_task/widgets/enter_button.dart';
+import 'package:interns_task/constants.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  static String id = 'registration';
+class LoginScreen extends StatefulWidget {
+  static String id = 'login_screen';
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             SizedBox(
-              height: 8.0,
+              height: 48.0,
             ),
             TextField(
               keyboardType: TextInputType.emailAddress,
@@ -50,13 +50,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   kTextFieldDecoration.copyWith(hintText: 'Enter the password'),
             ),
             SizedBox(
-              height: 48.0,
+              height: 24.0,
             ),
-            EnterButton(
-              label: 'Register',
-              colour: Colors.green,
-              onPressed: () {},
-            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: EnterButton(
+                onPressed: () {},
+                label: 'Login',
+                colour: Colors.lightGreen,
+              ),
+            )
           ],
         ),
       ),

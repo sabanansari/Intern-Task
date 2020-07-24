@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:interns_task/screens/registration_screen.dart';
 import 'package:interns_task/widgets/enter_button.dart';
+import 'package:flutter/animation.dart';
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -10,7 +12,31 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+    animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
+    controller.forward();
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +57,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Row(
               children: <Widget>[
                 Flexible(
-                  child: Container(
-                    height: 100.0,
-                    width: 80.0,
-                    child: Image.asset('images/greenshutter.png'),
+                  child: Hero(
+                    tag: 'logo',
+                    child: Container(
+                      height: animation.value * 80,
+                      width: 80.0,
+                      child: Image.asset('images/greenshutter.png'),
+                    ),
                   ),
                 ),
                 TypewriterAnimatedTextKit(
@@ -52,7 +81,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             EnterButton(
               label: 'Login',
               colour: Colors.lightGreen,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
             ),
             EnterButton(
               label: 'Register',
