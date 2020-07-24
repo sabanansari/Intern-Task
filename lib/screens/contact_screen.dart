@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
   @override
@@ -14,19 +15,35 @@ class ContactScreen extends StatelessWidget {
             Text(
               'Contact Us',
               style: TextStyle(
-                color: Colors.black87,
+                color: Colors.red,
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              'Phone No.: +91 9123456789',
-              style: TextStyle(
-                color: Colors.black87,
+            SizedBox(
+              height: 10.0,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                'Phone No.: +91 9123456789',
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15.0,
+                ),
               ),
             ),
-            Text(
-              'Email id: abcde@xyz.com',
-              style: TextStyle(
-                color: Colors.black87,
+            SizedBox(
+              height: 10.0,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                'Email id: abcde@xyz.com',
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15.0,
+                ),
               ),
             ),
           ],

@@ -115,6 +115,8 @@ class _ImagesScreenState extends State<ImagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return image == null ? buildSplashScreen() : buildImageScreen();
+    return image == null
+        ? Center(child: SingleChildScrollView(child: buildSplashScreen()))
+        : buildImageScreen();
   }
 }

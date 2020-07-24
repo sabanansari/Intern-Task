@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/contact_screen.dart';
 import 'screens/images_screen.dart';
-import 'screens/view_images_screen.dart';
+import 'screens/picture_screen.dart';
 
 class Choice {
   final String title;
@@ -24,11 +24,10 @@ class ChoicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     if (choice.icon == Icons.contacts) {
       return ContactScreen();
-    } else if(choice.icon == Icons.add_photo_alternate){
+    } else if (choice.icon == Icons.add_photo_alternate) {
       return ImagesScreen();
-    }
-    else{
-      return ViewImagesScreen();
+    } else {
+      return PostsPage();
     }
   }
 }

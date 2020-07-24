@@ -79,14 +79,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             EnterButton(
-              label: 'Login',
+              label: 'Sign In',
               colour: Colors.lightGreen,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             EnterButton(
-              label: 'Register',
+              label: 'Sign Up',
               colour: Colors.green,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
