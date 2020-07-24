@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:interns_task/screens/registration_screen.dart';
 import 'package:interns_task/widgets/enter_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -56,7 +57,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             EnterButton(
               label: 'Register',
               colour: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
             ),
           ],
         ),
