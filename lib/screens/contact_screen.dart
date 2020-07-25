@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
-  String emailId = 'abcde@xyz.com';
-  int number = 919123456789;
+  final String emailId = 'abcde@xyz.com';
+  final int number = 919123456789;
 
   void _launchEmail(emailId) async {
     var url = "mailto:$emailId";

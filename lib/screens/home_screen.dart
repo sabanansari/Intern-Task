@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:interns_task/screens/welcome_screen.dart';
 
 FirebaseUser loggedInUser;
+var _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class HomeScreen extends StatefulWidget {
   static String id = 'image_screen';
@@ -43,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return DefaultTabController(
         length: choices.length,
         child: Scaffold(
+          key: _scaffoldKey,
           appBar: AppBar(
               backgroundColor: Colors.green.withOpacity(0.8),
               title: const Text('Home Screen'),
@@ -76,8 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        SnackBar snackBar = SnackBar(
+                          content: Text(
+                            'Logged Out',
+                          ),
+                        );
+                        _scaffoldKey.currentState.showSnackBar(snackBar);
                         _auth.signOut();
-                        Navigator.pushNamed(context, WelcomeScreen.id);
+                        Navigator.popAndPushNamed(context, WelcomeScreen.id);
                       },
                       child: Container(
                         child: Text('Log Out'),

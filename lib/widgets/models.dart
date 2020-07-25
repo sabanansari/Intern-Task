@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:random_string/random_string.dart';
-import 'dart:math' show Random;
+
 import 'networking.dart';
 
 NetworkHelper networkHelper =
@@ -8,7 +8,6 @@ NetworkHelper networkHelper =
 var decoded = networkHelper.getData();
 
 Future<List<Map>> _getExampleServerData(int length) async {
-  String ran = randomAlphaNumeric(6);
   int ranInt = randomBetween(0, 5000);
   String imageTitle = (await decoded)[ranInt]['title'];
   String picture = (await decoded)[ranInt]['url'];
