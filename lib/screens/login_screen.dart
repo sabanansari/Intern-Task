@@ -93,8 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: EnterButton(
                     onPressed: () async {
                       setState(() async {
-                        showSpinner = true;
                         if (_formKey.currentState.validate()) {
+                          showSpinner = true;
                           try {
                             final user = await _auth.signInWithEmailAndPassword(
                                 email: email, password: password);
@@ -112,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             } else {
                               setState(() {
+                                showSpinner = false;
                                 SnackBar snackBar = SnackBar(
                                   content: Text(
                                     'Login Failed. Please check your credentials',
@@ -122,6 +123,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             }
                           } catch (e) {}
+                        } else {
+                          setState(() {
+                            showSpinner = false;
+                            SnackBar snackBar = SnackBar(
+                              content: Text(
+                                'Login Failed. Please check your credentials',
+                              ),
+                            );
+                            _scaffoldKey.currentState.showSnackBar(snackBar);
+                          });
                         }
                       });
                     },

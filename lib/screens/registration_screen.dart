@@ -145,8 +145,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   colour: Colors.green,
                   onPressed: () async {
                     setState(() async {
-                      showSpinner = true;
                       if (_formKey.currentState.validate()) {
+                        showSpinner = true;
                         if (password == confirmPassword) {
                           try {
                             final newUser =
@@ -166,17 +166,37 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 _scaffoldKey.currentState
                                     .showSnackBar(snackBar);
                               });
+                            } else {
+                              setState(() {
+                                showSpinner = false;
+                                Navigator.pushNamed(
+                                    context, RegistrationScreen.id);
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text('Registration failed'),
+                                ));
+                              });
                             }
                           } catch (e) {
                             print(e);
                           }
                         } else {
+                          setState(() {
+                            showSpinner = false;
+                            Navigator.pushNamed(context, RegistrationScreen.id);
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("passwords didn't match!"),
+                            ));
+                          });
+                        }
+                      } else {
+                        setState(() {
+                          showSpinner = false;
                           Navigator.pushNamed(context, RegistrationScreen.id);
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text('Enter the fields carefully'),
                           ));
-                        }
-                      } else {}
+                        });
+                      }
                     });
                   },
                 ),
