@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 8.0,
                     ),
-                    GestureDetector(
+                    GestureDettector(
                       onTap: () {
                         SnackBar snackBar = SnackBar(
                           content: Text(
